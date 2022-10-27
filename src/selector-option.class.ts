@@ -14,7 +14,7 @@ export class SelectorOption {
     const pre1 = UNDERSCORE + (final && this.selector.selectedIndex === this.index ? INVERSE : '');
     const pre2 = (!final && this.selector.selectedIndex === this.index ? INVERSE : '');
     const chars = this.text.split('');
-    if (this.shortcut != null) {
+    if (!final && this.shortcut != null) {
       chars[this.shortcut] = BOLD + chars[this.shortcut] + RESET + pre1 + (this.shortcut ? pre2 : '');
     }
     const out = `${pre1}${chars.shift()}${pre2}${chars.join('')}${RESET}`;
