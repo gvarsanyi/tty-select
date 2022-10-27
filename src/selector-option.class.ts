@@ -11,8 +11,9 @@ export class SelectorOption {
   constructor(readonly selector: Selector, readonly text: string, readonly index: number) {}
 
   render(final?: boolean): number {
-    const pre1 = UNDERSCORE + (final && this.selector.selectedIndex === this.index ? INVERSE : '');
-    const pre2 = (!final && this.selector.selectedIndex === this.index ? INVERSE : '');
+    const selected = this.selector.selectedIndex === this.index;
+    const pre1 = (selected ? '' : UNDERSCORE) + (final && selected ? INVERSE : '');
+    const pre2 = (!final && selected ? INVERSE : '');
     const chars = this.text.split('');
     if (!final && this.shortcut != null) {
       chars[this.shortcut] = BOLD + chars[this.shortcut] + RESET + pre1 + (this.shortcut ? pre2 : '');
